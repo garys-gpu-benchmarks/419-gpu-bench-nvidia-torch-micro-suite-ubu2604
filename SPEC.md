@@ -18,7 +18,7 @@ Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBenc
 | batch_size | `--batch-size` | smoke=1, baseline=8, extended=8 | 8 | From Parameter list; see Execution Description With Parameters. |
 | prompt_source | `--prompt-source` | smoke=synthetic, baseline=synthetic, extended=synthetic | synthetic | From Parameter list; see Execution Description With Parameters. |
 | warmup_iters | `--warmup-iters` | smoke=2, baseline=10, extended=20 | 10 | From Parameter list; see Execution Description With Parameters. |
-| num_iterations | `--num-iterations` | smoke=5, baseline=1140000, extended=2750000 | 1140000 | From Parameter list; see Execution Description With Parameters. |
+| num_iterations | `--num-iterations` | smoke=5, baseline=556000, extended=1520000 | 556000 | From Parameter list; see Execution Description With Parameters. |
 | seed | `--seed` | smoke=42, baseline=42, extended=42 | 42 | From Parameter list; see Execution Description With Parameters. |
 
 ### Derived quantities
