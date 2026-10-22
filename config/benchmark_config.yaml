@@ -38,6 +38,6 @@ sweep:
     extended: 20
   num_iterations:
     smoke: 5
-    baseline: 556000
-    extended: 1520000
+    baseline: 501000
+    extended: 1390000
   seed: 42
