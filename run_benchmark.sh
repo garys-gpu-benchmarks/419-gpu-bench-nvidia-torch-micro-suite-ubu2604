@@ -46,14 +46,12 @@ Validation and logging:
 
 Workload options:
   --device-id <value>            Override device_id
-  --kernel-type <value>            Override kernel_type
   --dtype <value>            Override dtype
   --input-shape <value>            Override input_shape
   --M <value>            Override M
   --N <value>            Override N
   --K <value>            Override K
   --batch-size <value>            Override batch_size
-  --prompt-source <value>            Override prompt_source
   --warmup-iters <value>            Override warmup_iters
   --num-iterations <value>            Override num_iterations
   --seed <value>            Override seed
@@ -91,14 +89,12 @@ LOG_LEVEL_VALUE="INFO"
 OUTPUT_FORMAT=""
 SAVE_OPTIONS_FILE=""
 DEVICE_ID=""
-KERNEL_TYPE=""
 DTYPE=""
 INPUT_SHAPE=""
 M=""
 N=""
 K=""
 BATCH_SIZE=""
-PROMPT_SOURCE=""
 WARMUP_ITERS=""
 NUM_ITERATIONS=""
 SEED=""
@@ -123,14 +119,12 @@ while [[ $# -gt 0 ]]; do
     --output-format) OUTPUT_FORMAT="${2:-}"; shift 2 ;;
     --save-options-file) SAVE_OPTIONS_FILE="${2:-}"; shift 2 ;;
     --device-id) DEVICE_ID="${2:-}"; shift 2 ;;
-    --kernel-type) KERNEL_TYPE="${2:-}"; shift 2 ;;
     --dtype) DTYPE="${2:-}"; shift 2 ;;
     --input-shape) INPUT_SHAPE="${2:-}"; shift 2 ;;
     --M) M="${2:-}"; shift 2 ;;
     --N) N="${2:-}"; shift 2 ;;
     --K) K="${2:-}"; shift 2 ;;
     --batch-size) BATCH_SIZE="${2:-}"; shift 2 ;;
-    --prompt-source) PROMPT_SOURCE="${2:-}"; shift 2 ;;
     --warmup-iters) WARMUP_ITERS="${2:-}"; shift 2 ;;
     --num-iterations) NUM_ITERATIONS="${2:-}"; shift 2 ;;
     --seed) SEED="${2:-}"; shift 2 ;;
@@ -173,14 +167,12 @@ PY
 }
 
 DEVICE_ID="${DEVICE_ID:-$(yaml_get device_id)}"
-KERNEL_TYPE="${KERNEL_TYPE:-$(yaml_get kernel_type)}"
 DTYPE="${DTYPE:-$(yaml_get dtype)}"
 INPUT_SHAPE="${INPUT_SHAPE:-$(yaml_get input_shape)}"
 M="${M:-$(yaml_get M)}"
 N="${N:-$(yaml_get N)}"
 K="${K:-$(yaml_get K)}"
 BATCH_SIZE="${BATCH_SIZE:-$(yaml_get batch_size)}"
-PROMPT_SOURCE="${PROMPT_SOURCE:-$(yaml_get prompt_source)}"
 WARMUP_ITERS="${WARMUP_ITERS:-$(yaml_get warmup_iters)}"
 NUM_ITERATIONS="${NUM_ITERATIONS:-$(yaml_get num_iterations)}"
 SEED="${SEED:-$(yaml_get seed)}"
@@ -190,14 +182,12 @@ OUTPUT_FORMAT="${OUTPUT_FORMAT:-csv}"
 BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
 [[ "${VALIDATE}" -eq 1 ]] && BENCHMARK_RUN_COMMAND+=" --validate"
 [[ -n "${DEVICE_ID}" ]] && BENCHMARK_RUN_COMMAND+=" --device-id $(printf %q "${DEVICE_ID}")"
-[[ -n "${KERNEL_TYPE}" ]] && BENCHMARK_RUN_COMMAND+=" --kernel-type $(printf %q "${KERNEL_TYPE}")"
 [[ -n "${DTYPE}" ]] && BENCHMARK_RUN_COMMAND+=" --dtype $(printf %q "${DTYPE}")"
 [[ -n "${INPUT_SHAPE}" ]] && BENCHMARK_RUN_COMMAND+=" --input-shape $(printf %q "${INPUT_SHAPE}")"
 [[ -n "${M}" ]] && BENCHMARK_RUN_COMMAND+=" --M $(printf %q "${M}")"
 [[ -n "${N}" ]] && BENCHMARK_RUN_COMMAND+=" --N $(printf %q "${N}")"
 [[ -n "${K}" ]] && BENCHMARK_RUN_COMMAND+=" --K $(printf %q "${K}")"
 [[ -n "${BATCH_SIZE}" ]] && BENCHMARK_RUN_COMMAND+=" --batch-size $(printf %q "${BATCH_SIZE}")"
-[[ -n "${PROMPT_SOURCE}" ]] && BENCHMARK_RUN_COMMAND+=" --prompt-source $(printf %q "${PROMPT_SOURCE}")"
 [[ -n "${WARMUP_ITERS}" ]] && BENCHMARK_RUN_COMMAND+=" --warmup-iters $(printf %q "${WARMUP_ITERS}")"
 [[ -n "${NUM_ITERATIONS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-iterations $(printf %q "${NUM_ITERATIONS}")"
 [[ -n "${SEED}" ]] && BENCHMARK_RUN_COMMAND+=" --seed $(printf %q "${SEED}")"
@@ -244,14 +234,12 @@ run_collection() {
   fi
   grep -q -- '--output-format' <<<"${help}" && collect_args+=(--output-format "${OUTPUT_FORMAT}")
   grep -q -- '--device-id' <<<"${help}" && collect_args+=(--device-id "${DEVICE_ID}")
-  grep -q -- '--kernel-type' <<<"${help}" && collect_args+=(--kernel-type "${KERNEL_TYPE}")
   grep -q -- '--dtype' <<<"${help}" && collect_args+=(--dtype "${DTYPE}")
   grep -q -- '--input-shape' <<<"${help}" && collect_args+=(--input-shape "${INPUT_SHAPE}")
   grep -q -- '--M' <<<"${help}" && collect_args+=(--M "${M}")
   grep -q -- '--N' <<<"${help}" && collect_args+=(--N "${N}")
   grep -q -- '--K' <<<"${help}" && collect_args+=(--K "${K}")
   grep -q -- '--batch-size' <<<"${help}" && collect_args+=(--batch-size "${BATCH_SIZE}")
-  grep -q -- '--prompt-source' <<<"${help}" && collect_args+=(--prompt-source "${PROMPT_SOURCE}")
   grep -q -- '--warmup-iters' <<<"${help}" && collect_args+=(--warmup-iters "${WARMUP_ITERS}")
   grep -q -- '--num-iterations' <<<"${help}" && collect_args+=(--num-iterations "${NUM_ITERATIONS}")
   grep -q -- '--seed' <<<"${help}" && collect_args+=(--seed "${SEED}")

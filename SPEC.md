@@ -2,21 +2,19 @@
 
 ## Execution Description
 
-Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size, batch_size, warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows Sweep dimensions: device_id, kernel_type, dtype, input_shape, M, N, K, batch_size.
+Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size, batch_size, warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows Sweep dimensions: device_id, dtype, input_shape, M, N, K, batch_size, warmup_iters.
 
 ## Parameters
 
 | Parameter | CLI Flag | Tested Values | Default | Description |
 | --- | --- | --- | --- | --- |
 | device_id | `--device-id` | smoke=0, baseline=0, extended=0 | 0 | From Parameter list; see Execution Description With Parameters. |
-| kernel_type | `--kernel-type` | smoke=all, baseline=all, extended=all | all | From Parameter list; see Execution Description With Parameters. |
 | dtype | `--dtype` | smoke=fp16, baseline=fp16, extended=fp16 | fp16 | From Parameter list; see Execution Description With Parameters. |
 | input_shape | `--input-shape` | smoke=1,3,32,32, baseline=1,3,224,224, extended=8,3,224,224 | 1,3,224,224 | From Parameter list; see Execution Description With Parameters. |
 | M | `--m` | smoke=64, baseline=4096, extended=4096 | 4096 | From Parameter list; see Execution Description With Parameters. |
 | N | `--n` | smoke=64, baseline=4096, extended=4096 | 4096 | From Parameter list; see Execution Description With Parameters. |
 | K | `--k` | smoke=64, baseline=4096, extended=4096 | 4096 | From Parameter list; see Execution Description With Parameters. |
 | batch_size | `--batch-size` | smoke=1, baseline=8, extended=8 | 8 | From Parameter list; see Execution Description With Parameters. |
-| prompt_source | `--prompt-source` | smoke=synthetic, baseline=synthetic, extended=synthetic | synthetic | From Parameter list; see Execution Description With Parameters. |
 | warmup_iters | `--warmup-iters` | smoke=2, baseline=10, extended=20 | 10 | From Parameter list; see Execution Description With Parameters. |
 | num_iterations | `--num-iterations` | smoke=5, baseline=501000, extended=1390000 | 501000 | From Parameter list; see Execution Description With Parameters. |
 | seed | `--seed` | smoke=42, baseline=42, extended=42 | 42 | From Parameter list; see Execution Description With Parameters. |
