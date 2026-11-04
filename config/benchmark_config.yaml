@@ -26,10 +26,6 @@ sweep:
     smoke: 64
     baseline: 4096
     extended: 4096
-  batch_size:
-    smoke: 1
-    baseline: 8
-    extended: 8
   warmup_iters:
     smoke: 2
     baseline: 10

@@ -51,7 +51,6 @@ Workload options:
   --M <value>            Override M
   --N <value>            Override N
   --K <value>            Override K
-  --batch-size <value>            Override batch_size
   --warmup-iters <value>            Override warmup_iters
   --num-iterations <value>            Override num_iterations
   --seed <value>            Override seed
@@ -94,7 +93,6 @@ INPUT_SHAPE=""
 M=""
 N=""
 K=""
-BATCH_SIZE=""
 WARMUP_ITERS=""
 NUM_ITERATIONS=""
 SEED=""
@@ -124,7 +122,6 @@ while [[ $# -gt 0 ]]; do
     --M) M="${2:-}"; shift 2 ;;
     --N) N="${2:-}"; shift 2 ;;
     --K) K="${2:-}"; shift 2 ;;
-    --batch-size) BATCH_SIZE="${2:-}"; shift 2 ;;
     --warmup-iters) WARMUP_ITERS="${2:-}"; shift 2 ;;
     --num-iterations) NUM_ITERATIONS="${2:-}"; shift 2 ;;
     --seed) SEED="${2:-}"; shift 2 ;;
@@ -172,7 +169,6 @@ INPUT_SHAPE="${INPUT_SHAPE:-$(yaml_get input_shape)}"
 M="${M:-$(yaml_get M)}"
 N="${N:-$(yaml_get N)}"
 K="${K:-$(yaml_get K)}"
-BATCH_SIZE="${BATCH_SIZE:-$(yaml_get batch_size)}"
 WARMUP_ITERS="${WARMUP_ITERS:-$(yaml_get warmup_iters)}"
 NUM_ITERATIONS="${NUM_ITERATIONS:-$(yaml_get num_iterations)}"
 SEED="${SEED:-$(yaml_get seed)}"
@@ -187,7 +183,6 @@ BENCHMARK_RUN_COMMAND="bash run_benchmark.sh --${PROFILE}"
 [[ -n "${M}" ]] && BENCHMARK_RUN_COMMAND+=" --M $(printf %q "${M}")"
 [[ -n "${N}" ]] && BENCHMARK_RUN_COMMAND+=" --N $(printf %q "${N}")"
 [[ -n "${K}" ]] && BENCHMARK_RUN_COMMAND+=" --K $(printf %q "${K}")"
-[[ -n "${BATCH_SIZE}" ]] && BENCHMARK_RUN_COMMAND+=" --batch-size $(printf %q "${BATCH_SIZE}")"
 [[ -n "${WARMUP_ITERS}" ]] && BENCHMARK_RUN_COMMAND+=" --warmup-iters $(printf %q "${WARMUP_ITERS}")"
 [[ -n "${NUM_ITERATIONS}" ]] && BENCHMARK_RUN_COMMAND+=" --num-iterations $(printf %q "${NUM_ITERATIONS}")"
 [[ -n "${SEED}" ]] && BENCHMARK_RUN_COMMAND+=" --seed $(printf %q "${SEED}")"
@@ -239,7 +234,6 @@ run_collection() {
   grep -q -- '--M' <<<"${help}" && collect_args+=(--M "${M}")
   grep -q -- '--N' <<<"${help}" && collect_args+=(--N "${N}")
   grep -q -- '--K' <<<"${help}" && collect_args+=(--K "${K}")
-  grep -q -- '--batch-size' <<<"${help}" && collect_args+=(--batch-size "${BATCH_SIZE}")
   grep -q -- '--warmup-iters' <<<"${help}" && collect_args+=(--warmup-iters "${WARMUP_ITERS}")
   grep -q -- '--num-iterations' <<<"${help}" && collect_args+=(--num-iterations "${NUM_ITERATIONS}")
   grep -q -- '--seed' <<<"${help}" && collect_args+=(--seed "${SEED}")
