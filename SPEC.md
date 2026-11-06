@@ -2,7 +2,7 @@
 
 ## Execution Description
 
-Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows Sweep dimensions: device_id, dtype, input_shape, M, N, K, warmup_iters, num_iterations.
+Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows Sweep dimensions: device_id, dtype, input_shape, M, N, K, warmup_iters, num_iterations.
 
 ## Parameters
 
@@ -25,7 +25,7 @@ Matrix extents come from the Parameters table. Example: use the tested value of 
 ## Invocation
 
 ```bash
-Run scripts/gemm.py and scripts/conv2d.py via collect_torch_micro.py. Official TorchBench runners are not executed
+Run the PyTorch microkernel suite through scripts/gemm.py and scripts/conv2d.py
 ```
 
 ## Raw Output Format
@@ -46,16 +46,16 @@ summary,0,fp16,all,ok,15,20,600,25,12,400
 
 ## Framework
 
-Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows
+Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows
 
 ## Installation and Execution Summary
 
-Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance. This is not TorchBench run.py
+Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance
 
 ## Platform Portability
 
 - **AMD (primary):** ```bash
-Run scripts/gemm.py and scripts/conv2d.py via collect_torch_micro.py. Official TorchBench runners are not executed
+Run the PyTorch microkernel suite through scripts/gemm.py and scripts/conv2d.py
 ```
 - **NVIDIA:** Native NVIDIA CUDA workload. Execute on the stated Ubuntu release with the host NVIDIA driver and CUDA userspace. ROCm porting notes do not apply.
 
@@ -106,10 +106,10 @@ bash run_benchmark.sh --extended
 2. `run.error_message` is NULL.
 3. `started_at` and `finished_at` are valid ISO-8601 UTC strings.
 4. All required aggregate metrics in `runs` are non-NULL and finite.
-5. All required aggregate metrics are physically sensible (positive values). Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows
+5. All required aggregate metrics are physically sensible (positive values). Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows
 6. At least 2 sample rows exist for the latest `run_id` (sweep coverage).
 7. No sample has `status = 'error'`.
-8. Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows
+8. Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows
 
 ### Baseline / Threshold configuration (`config/benchmark_config.yaml`)
 

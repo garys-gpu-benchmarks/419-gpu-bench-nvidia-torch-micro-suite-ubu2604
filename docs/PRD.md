@@ -12,16 +12,16 @@ This PRD.md section is populated from benchmark_specification.json, which is the
 419
 
 ## Workload Name
-TorchBench Microkernels
+PyTorch Microkernel Suite
 
 ## Execution Summary (Run and Measure)
-Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance. This is not TorchBench run.py
+Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance
 
 ## Main Goal
-Measure local PyTorch GEMM and Conv2D microkernel latency/TFLOPS
+Measure PyTorch GEMM and Conv2d microkernel time, TFLOPS, and bandwidth
 
 ## Validation Objective
-Validates CUDA GEMM and Conv2D microkernel metrics from gemm.py and conv2d.py
+Validates GEMM and Conv2d time, TFLOPS, and bandwidth from scripts/gemm.py and scripts/conv2d.py
 
 ## Workload Category
 Compute & Math Kernels

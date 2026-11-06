@@ -7,7 +7,7 @@
   {
     "field_name": "Workload Name",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "TorchBench Microkernels"
+    "value": "PyTorch Microkernel Suite"
   },
   {
     "field_name": "GPU Vendor",
@@ -32,7 +32,7 @@
   {
     "field_name": "Main Goal",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Measure local PyTorch GEMM and Conv2D microkernel latency/TFLOPS"
+    "value": "Measure PyTorch GEMM and Conv2d microkernel time, TFLOPS, and bandwidth"
   },
   {
     "field_name": "Metrics",
@@ -140,6 +140,16 @@
     "value": "-"
   },
   {
+    "field_name": "Validation Objective",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Validates GEMM and Conv2d time, TFLOPS, and bandwidth from scripts/gemm.py and scripts/conv2d.py"
+  },
+  {
+    "field_name": "Command Tools Executed",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Run the PyTorch microkernel suite through scripts/gemm.py and scripts/conv2d.py"
+  },
+  {
     "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --smoke --validate --device-id 0 --dtype fp16 --input-shape 1,3,32,32 --M 64 --N 64 --K 64 --warmup-iters 2 --num-iterations 5 --seed 42"
@@ -155,29 +165,19 @@
     "value": "bash run_benchmark.sh --extended --validate --device-id 0 --dtype fp16 --input-shape 8,3,224,224 --M 4096 --N 4096 --K 4096 --warmup-iters 20 --num-iterations 1390000 --seed 42"
   },
   {
-    "field_name": "Validation Objective",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates CUDA GEMM and Conv2D microkernel metrics from gemm.py and conv2d.py"
-  },
-  {
-    "field_name": "Command Tools Executed",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/gemm.py and scripts/conv2d.py via collect_torch_micro.py. Official TorchBench runners are not executed"
-  },
-  {
     "field_name": "Command Execution Details and Purpose",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance. This is not TorchBench run.py"
+    "value": "Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance"
   },
   {
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run local scripts/gemm.py for GEMM and scripts/conv2d.py for Conv2d on yaml M, N, K and input_shape, parse RESULT time, TFLOPS, and bandwidth, and write gemm, conv2d, and summary rows. This is not TorchBench run.py"
+    "value": "Run local scripts/gemm.py for GEMM and scripts/conv2d.py for Conv2d on yaml M, N, K and input_shape, parse RESULT time, TFLOPS, and bandwidth, and write gemm, conv2d, and summary rows"
   },
   {
     "field_name": "Execution Description With Parameters",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA), not a TorchBench package and not ROCm. device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows"
+    "value": "Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows"
   },
   {
     "field_name": "Execution Domain",
@@ -327,7 +327,7 @@
   {
     "field_name": "Known Runtime Constraints (<=35 Words Each)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Local microkernels, not TorchBench. Exclusive GPU recommended. Shape and dtype dictate HBM and runtime"
+    "value": "Repository-local GEMM and Conv2d microkernels. Exclusive GPU preferred. dtype and shape set memory use and runtime"
   },
   {
     "field_name": "GPU Architecutre ID",
@@ -372,12 +372,12 @@
   {
     "field_name": "Installation and Execution Summary",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance. This is not TorchBench run.py"
+    "value": "Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance"
   },
   {
     "field_name": "Workload Command Line Executable",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/gemm.py and scripts/conv2d.py via collect_torch_micro.py. Official TorchBench runners are not executed"
+    "value": "Run the PyTorch microkernel suite through scripts/gemm.py and scripts/conv2d.py"
   },
   {
     "field_name": "ROCm Version",
@@ -392,7 +392,7 @@
   {
     "field_name": "Execution Summary (Run and Measure)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance. This is not TorchBench run.py"
+    "value": "Run local scripts/gemm.py for GEMM (C = A x B) and scripts/conv2d.py for Conv2d on yaml M/N/K and input_shape, parse RESULT time/TFLOPS/bandwidth, and write gemm, conv2d, and summary CSV rows, to measure PyTorch CUDA microkernel performance"
   },
   {
     "field_name": "nVidia Porting Instructions (Reference Only)",
@@ -412,7 +412,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"device_id\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"dtype\": {\"smoke\": \"fp16\", \"baseline\": \"fp16\", \"extended\": \"fp16\", \"notes\": \"\"}, \"input_shape\": {\"smoke\": \"1,3,32,32\", \"baseline\": \"1,3,224,224\", \"extended\": \"8,3,224,224\", \"notes\": \"Sweep/list value. Command column documents it; omit this flag so yaml expands cases.\"}, \"M\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"N\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"K\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\", \"notes\": \"\"}, \"warmup_iters\": {\"smoke\": \"2\", \"baseline\": \"10\", \"extended\": \"20\", \"notes\": \"\"}, \"num_iterations\": {\"smoke\": \"5\", \"baseline\": \"501000\", \"extended\": \"1390000\", \"notes\": \"Ubuntu 26.04 sibling of 219. 00_75 H100 20260905 torch-micro iter retune. | 2026-09-28 GARY_LEDGER (aggregated_runtime_ledgers_101_201_301_401_20260928_9am; targets baseline 3-5 min, extended 8-15 min): 420000/1230000 -> 860000/2000000. baseline 420000 measured 2:04/2:05, extended 1230000 measured 7:31/7:31. Scaled to ~4:00-4:15 / ~12:00. Unconfirmed by a fresh run. | 2026-10-19 GARY_LEDGER (runtime_ledger_Aggregate_375_376_377_378_20261019a_845am; targets baseline under 5 min, extended under 15 min): baseline 1140000 measured 8:04/8:03 (slower run); fixed start ~8s from smoke; 1140000 -> 556000, predicted ~4:00; extended 2750000 measured 21:38 (slower run); fixed start ~8s from smoke; 2750000 -> 1520000, predicted ~12:01. Unconfirmed by a fresh run. | 2026-10-21 baseline 556000 -> 501000; 219 and 419 now share one value (as 1xx/3xx do). Ledger-predicted baseline runtime 24.04 ~4:09, 26.04 ~3:51 (limits: baseline 5:00, extended 15:00). | 2026-10-21 extended 1520000 -> 1390000; 219 and 419 now share one value (as 1xx/3xx do). Ledger-predicted extended runtime 24.04 ~12:23, 26.04 ~11:10 (limits: baseline 5:00, extended 15:00)\"}, \"seed\": {\"smoke\": \"42\", \"baseline\": \"42\", \"extended\": \"42\", \"notes\": \"\"}}"
+    "value": "{\"device_id\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\"}, \"dtype\": {\"smoke\": \"fp16\", \"baseline\": \"fp16\", \"extended\": \"fp16\"}, \"input_shape\": {\"smoke\": \"1,3,32,32\", \"baseline\": \"1,3,224,224\", \"extended\": \"8,3,224,224\"}, \"M\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"N\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"K\": {\"smoke\": \"64\", \"baseline\": \"4096\", \"extended\": \"4096\"}, \"warmup_iters\": {\"smoke\": \"2\", \"baseline\": \"10\", \"extended\": \"20\"}, \"num_iterations\": {\"smoke\": \"5\", \"baseline\": \"501000\", \"extended\": \"1390000\"}, \"seed\": {\"smoke\": \"42\", \"baseline\": \"42\", \"extended\": \"42\"}}"
   },
   {
     "field_name": "Profile Command Authorship",
