@@ -16,12 +16,11 @@ capture_benchmark_run_command_submitted "$@"
 
 usage() {
   cat <<'USAGE'
+
 Usage: bash run_benchmark.sh [OPTIONS]
 
 Workload Name:          PyTorch Microkernel Suite.
 Main Goal:              Measure PyTorch GEMM and Conv2d microkernel time, TFLOPS, and bandwidth.
-Validation Objective:   Validates GEMM and Conv2d time, TFLOPS, and bandwidth from scripts/gemm.py
-                        and scripts/conv2d.py.
 Command Tools Executed: Run the PyTorch microkernel suite through scripts/gemm.py and
                         scripts/conv2d.py.
 
