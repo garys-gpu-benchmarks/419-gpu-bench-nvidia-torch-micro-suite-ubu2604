@@ -31,13 +31,23 @@ Profiles (default: --smoke):
 
 Parameters (override the profile's value):
   --device-id <value>           Target accelerator or device identifier (smoke/baseline/extended: 0)
-  --dtype <value>               Tensor, element, or storage data type (smoke/baseline/extended: fp16)
-  --input-shape <value>         Shared workload parameter (smoke 1,3,32,32, baseline 1,3,224,224, extended 8,3,224,224)
+  --dtype <value>               Tensor, element, or storage data type
+                                  all profiles: fp16
+  --input-shape <value>         Shared workload parameter
+                                  smoke:    1,3,32,32
+                                  baseline: 1,3,224,224
+                                  extended: 8,3,224,224
   --M <n>                       GEMM M matrix dimension (smoke 64, baseline 4096, extended 4096)
   --N <n>                       GEMM N matrix dimension (smoke 64, baseline 4096, extended 4096)
   --K <n>                       GEMM K matrix dimension (smoke 64, baseline 4096, extended 4096)
-  --warmup-iters <n>            Untimed warm-up repetitions before measurement (smoke 2, baseline 10, extended 20)
-  --num-iterations <n>          Number of timed repetitions (smoke 5, baseline 501000, extended 1390000)
+  --warmup-iters <n>            Untimed warm-up repetitions before measurement
+                                  smoke:    2
+                                  baseline: 10
+                                  extended: 20
+  --num-iterations <n>          Number of timed repetitions
+                                  smoke:    5
+                                  baseline: 501000
+                                  extended: 1390000
   --seed <n>                    Random seed used for reproducibility (smoke/baseline/extended: 42)
 
 General options:
