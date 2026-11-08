@@ -202,17 +202,17 @@
   {
     "field_name": "GPU Model",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "H100 SXM 80GB"
-  },
-  {
-    "field_name": "Raw Output Format",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "raw_results.csv, raw_results.jsonl, and gemm plus conv2d text in raw_output.txt"
+    "value": "--"
   },
   {
     "field_name": "Primary Record Granularity",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "three CSV rows (gemm, conv2d, summary) carrying the same six values"
+  },
+  {
+    "field_name": "Raw Output Format",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "raw_results.csv, raw_results.jsonl, and gemm plus conv2d text in raw_output.txt"
   },
   {
     "field_name": "Raw Output Example",
@@ -225,19 +225,19 @@
     "value": "gemm_time_usec, gemm_tflops, gemm_bandwidth_gb_s, conv_time_usec, conv_tflops, conv_bandwidth_gb_s"
   },
   {
-    "field_name": "Success Criteria",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "gemm.py and conv2d.py exit 0 and print all six values, and every value is positive"
-  },
-  {
     "field_name": "Parser and Normalization Notes",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "GEMM and Conv2d are separate metrics; nothing is averaged across kernels. Conv2d FLOPs are 2 x N x Cout x H x W x Cin x 9 (Cout = 8) and its bytes count input, weights, and output. A failed script or missing value fails the run (no 1.0 default). The three rows carry the same values"
   },
   {
+    "field_name": "Success Criteria",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "gemm.py and conv2d.py exit 0 and print all six values, and every value is positive"
+  },
+  {
     "field_name": "Hardware Config",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "NVIDIA H100 SXM host (20+ vCPUs, 128+ GB RAM, local NVMe), 1x H100 SXM (80 GB HBM3, sm_90, 132 SMs)"
+    "value": "Cloud GPU host such as a RunPod Pod (20+ vCPUs, 128+ GB RAM, local NVMe), 1x NVIDIA data-center GPU (80+ GB HBM; model varies by provider)"
   },
   {
     "field_name": "GPU Architecture",

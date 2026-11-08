@@ -19,10 +19,10 @@ usage() {
 
 Usage: bash run_benchmark.sh [OPTIONS]
 
-Workload Name:          PyTorch Microkernel Suite.
-Main Goal:              Measure PyTorch GEMM and Conv2d microkernel time, TFLOPS, and bandwidth.
+Workload Name:          PyTorch Microkernel Suite
+Main Goal:              Measure PyTorch GEMM and Conv2d microkernel time, TFLOPS, and bandwidth
 Command Tools Executed: Run the PyTorch microkernel suite through scripts/gemm.py and
-                        scripts/conv2d.py.
+                        scripts/conv2d.py
 
 Profiles (default: --smoke):
   --smoke                       Run smoke profile
