@@ -40,6 +40,11 @@
     "value": "Run the PyTorch microkernel suite through scripts/gemm.py and scripts/conv2d.py"
   },
   {
+    "field_name": "Execution Description With Parameters",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows"
+  },
+  {
     "field_name": "Metrics",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "#1: GEMM execution time, us (gemm_time_usec); #2: GEMM throughput, TFLOPS (gemm_tflops); #3: GEMM minimum traffic, GB/s (gemm_bandwidth_gb_s); #4: Conv2d execution time, us (conv_time_usec); #5: Conv2d throughput, TFLOPS (conv_tflops); #6: Conv2d minimum traffic, GB/s (conv_bandwidth_gb_s)"
@@ -173,11 +178,6 @@
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Run local scripts/gemm.py for GEMM and scripts/conv2d.py for Conv2d on yaml M, N, K and input_shape, parse RESULT time, TFLOPS, and bandwidth, and write gemm, conv2d, and summary rows"
-  },
-  {
-    "field_name": "Execution Description With Parameters",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Runs local scripts/gemm.py and scripts/conv2d.py (PyTorch CUDA). device_id, dtype (fp16), M/N/K, input_shape / image size (its first number is the conv batch), warmup_iters, num_iterations, and seed come from yaml. kernel_type selects which script; the collector always runs both and writes gemm, conv2d, and summary rows"
   },
   {
     "field_name": "Execution Domain",
